@@ -1,43 +1,51 @@
-#ruby/rspec/connect_four/lib/connect4.rb
+#ruby/rspec/connect_four/lib/Connect4.rb
 
 class Connect4
 
 
-end
+  def create_board
+    Board.new
+  end
 
-
-
-class Player
-  attr_accessor :color
 
 end
 
 
 class Board
+  attr_accessor :spaces, :color
+
+  def initialize
+    6.times do |x|
+      5.times do |y|
+        @spaces = {[x,y] => nil}
+      end
+    end    
+  end
 
 
-  def empty?()
+  def empty?
+    6.times do |x|
+      5.times do |y|
+        return false if !@spaces[[x,y]].nil?
+      end
+    end
 
+    return true
   end
 
 end
 
-
-class Piece
-  attr_accessor :color
-
-  def inititalize(color)
-    @color = color
-  end
-end
 
 =begin
-| ◉ | ● | ○ |   |   |
-| ◌ | ◌ | ◌ |   |   |
-| ◦ |   |   |   |   |
-| ◦ |   |   |   |   |
-| ◦ |   |   |   |   |
-| ◦ |   |   |   |   |
-|   |   |   |   |   |
+| ◉ | ● | ○ |   |   |   |   | 
+| ◌ | ◌ | ◌ |   |   |   |   | 
+| ◦ |   |   |   |   |   |   | 
+| ◦ |   |   |   |   |   |   | 
+| ◦ |   |   |   |   |   |   | 
+| ◦ |   |   |   |   |   |   | 
+
+7x6
+
+[0..6, 0..5]
 
 =end
